@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <style>
+            .container{
+                background-color: brown;
+                height: 50vh;
+                width: 80%;
+                border: 6px solid black;
+                margin: 50px auto 0 auto;
+                box-shadow: 0px 0px 100px gray;
+                display: flex;
+                flex-grow: 1;
+                /* flex-direction: column; */
+                justify-content: center; 
+                justify-content: space-around;
+                /* align-items: center; */
+
+            }
+            .container > div{
+                width: 60px;
+                height: 60px;
+                background-color: blue;
+                border: 1px solid white;
+                color: azure;
+                font-size: 30px;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+                text-align: center;
+                line-height: 60px;
+                flex-grow: 1;
+            }
+                /* flex-grow: assign free space to applied element */
+                /* flex-grow:2 dividing and assigning total free space/2  if you want to give equal space to all give flex-grow :1 to all item*/
+            
+            .container > div:nth-child(2){
+                flex-grow: 2;
+                
+            }
+           
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        
+    </body>
+</html>
