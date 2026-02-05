@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                
+                
+            }
+            .cout1{
+                height: 50px;
+                width: 100%;
+                background-color: aqua;
+                display: flex;
+                border: solid rebeccapurple 1px;
+            }
+            .a{
+                display:inline-flex;
+                background-color: rgb(163, 216, 79);
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+                flex: 1;
+                /* .up → flex container
+                    .a → flex item (affected by .up)
+                    "Doctor" → just text (NOT affected by .up)
+                    So:
+                    .up can position .a
+                    .up cannot directly position the text */
+            
+            }
+            .cont
+            {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                background-color: color(srgb red green blue);
+                gap: 10px;
+
+            }
+            .left{
+                display: flex;
+                height: 100%;
+                width: 30%;
+                background-color: aqua;
+                border: solid blueviolet 1px;
+                /* flex: 0 0 30%; */
+                flex-direction: column;
+
+            }
+            .right{
+                height: 100%;
+                width: 70%;
+                background-color: aqua;
+                border: solid red;
+                
+            }
+            .up{
+                display: flex;
+                flex: 1;
+                border: solid rgb(121, 77, 77) 1px;
+                justify-content: center;
+                align-items: center;
+                What happens
+
+                   /* .up → flex container
+                    .a → flex item (affected by .up)
+                    "Doctor" → just text (NOT affected by .up)
+                    So:
+                    .up can position .a
+                    .up cannot directly position the text */
+                
+                
+            }
+            .down{
+                flex: 1;
+                border: solid rgb(121, 77, 77) 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="cout1"></div>
+        <div class="cont">
+            <div class="left">
+                <div class="up">
+                    <div class="a">Doctor</div>
+                </div>
+                <div class="down"></div>
+                
+            </div>
+            <div class="right"></div>
+            
+        </div>
+    </body>
+</html>

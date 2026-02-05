@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox 2x2 Layout</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #8d7878;
+        }
+
+        .container {
+            width: 500px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .row {
+          flex: 1; 
+          display: flex;
+        }
+
+        .box {
+            flex: 1;
+            border: 3px solid white;
+        }
+
+        .blue {
+            background-color: #02ABF0;
+        }
+
+        .pink {
+            background-color: #02ABF0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="box blue"></div>
+            <div class="box blue"></div>
+            <div class="box blue"></div>
+        </div>
+
+        <div class="row">
+            <div class="box pink"></div>
+            <div class="box pink"></div>
+        </div>
+        <div class="row">
+            <div class="box pink"></div>
+            <div class="box pink"></div>
+    </div>
+
+</body>
+</html>

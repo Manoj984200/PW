@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flex Layout</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Top bar */
+    .container {
+        width: 100%;
+        background-color: rgb(138, 221, 221);
+        padding: 10px 20px;
+    }
+
+    #a {
+        display: flex;
+        justify-content: space-between;
+        /* align-items: center; */
+    }
+
+    #a input[type="search"] {
+        width: 30%;
+        height: 32px;
+        padding: 5px;
+    }
+
+    #b {
+        display: flex;
+        gap: 10px;
+    }
+
+    /* Main layout (left + right) */
+    .main {
+        display: flex;
+        width: 100%;
+        height: 540px;
+        margin-top: 10px;
+    }
+
+    /* Left container */
+    #c {
+        width: 30%;
+        background-color: #02ABF0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .box {
+        flex: 1;
+        border: 1px solid #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Doctor cards */
+    .co {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(224, 145, 66);
+        border-radius: 10px;
+        padding: 10px 14px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    /* Right container */
+    #d {
+        flex: 1;
+        background-color: #f5f5f5;
+        margin-left: 10px;
+        padding: 20px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Top Bar -->
+<div class="container">
+    <div id="a">
+        <input type="search" placeholder="Search...">
+        <div id="b">
+            <input type="button" value="Login">
+            <input type="button" value="Sign in">
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+
+    <!-- Left Section -->
+    <div id="c">
+        <div class="row">
+            <div class="box">
+                <div class="co">Doctor</div>
+                <div class="co">Neurologist<br>Dr. Virendra Sinha</div>
+            </div>
+            <div class="box"></div>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div id="d">
+        <h2>Right Container</h2>
+        <p>This container automatically fills the remaining space.</p>
+        <p>You can place content, cards, tables, or anything here.</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid2</title>
+     <style>
+        .container{
+            display: grid;
+            height: 100vh;
+            width: 100%;
+            grid-template-columns: 1fr 2.7fr;
+            grid-template-rows: 50px 2fr 2fr 50px;
+            grid-template-areas: "header header"
+            "Lbox1 Rbox"
+            "Lbox2 Rbox"
+            "footer footer";
+            /* if we use grid-template-areas no need to use grid-column-start: ;
+            grid-column-end */
+            /* grid-template-columns: 500px 1fr;
+            grid-template-rows: 20px 1fr; */
+        }
+        .Header{
+            grid-area: header;
+            /* grid-column-start: 1;
+            grid-column-end: 3; */
+            background-color: aqua;
+            /* height: 20px; */
+            /* grid-area: Lbox1 Lbox2; */
+        }
+        .Lbox1{
+            
+            background-color: blueviolet;
+            border: solid beige 1px;
+            grid-area: Lbox1;
+            /* width: 100%; */
+        }
+        .Lbox2{
+            
+            background-color: rgb(226, 43, 58);
+            border: solid beige 1px;
+            grid-area: Lbox2;
+            /* width: 20%; */
+        }
+        .Rbox{
+            background-color: rgb(226, 43, 58);
+            /* grid-row-start: 2;
+            grid-row-end: 4;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            above 4 line cab be written like grid-area: 2/4/2/3; */
+            /* or if want it can be in row or col wise two lines like grid-row: 2/4; */
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            grid-area: Rbox;
+            /* width: 80%; */
+            
+        }
+        .footer{
+            background-color: antiquewhite;
+            grid-area: footer;
+            /* height: 20px; */
+        }
+     </style>
+</head>
+<body>
+    <div class="container">
+        <div class="Header">Header</div>
+        <div class="Lbox1">Lbox1</div>
+        <div class="Lbox2">Lbox2</div>
+        <div class="Rbox">Rbox</div>
+        <div class="footer">Footer</div>
+        </div>
+    
+</body>
+</html>

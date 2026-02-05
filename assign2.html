@@ -1,0 +1,147 @@
+<html>
+<head>
+    <style>
+        .main{
+            display: flex;
+            height: 540px;
+            /* flex: 1; */
+        }
+        #d{
+            flex: 1;
+            background-color: #02ABF0;
+            padding: 10px;
+            
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            
+
+        }
+        *{
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            background-color: rgb(138, 221, 221);
+            display: flex;
+            /* justify-content: center; */
+            padding-left: 20px;
+            /* flex-direction: column; */
+            
+        }
+        .C2{
+            display: flex;
+        }
+
+        #a {
+            width: 100%;
+            display: flex;                 /* KEY LINE */
+            /* align-items: center;           vertical alignment */
+            justify-content: space-between;     /* search left, buttons right */
+            padding: 10px;
+            /* border: 1px solid black; */
+        }
+        #a img{
+            height: 40px;
+
+        } 
+        #a input[type="search"] {
+            width: 30%;
+            height: 30px;
+            margin-left: 15px;
+        }
+
+        #b {
+            display: flex;      /* buttons side by side */
+            gap: 10px;
+        }
+        #c{
+            /* margin-top: 10px; */
+            background-color: blue;
+            height: 540px;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+        }
+        .row {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 540px;
+
+        }
+
+        .box {
+            flex: 1;
+            border: 0.2px solid rgb(94, 20, 20);
+        }
+
+        .blue {
+            background-color: #02ABF0;
+        }
+
+        .pink {
+            background-color: #02ABF0;
+            /* width: auto; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .co{
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(224, 145, 66);
+            display: inline-flex;
+            border-radius: 10%;
+            height: 20%;
+            margin-right: 8px;
+            /* width: auto; */
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        
+        <div id="a" >
+            <img src="LOGO.png" alt="pilani " class="logo">
+
+            <input type="search" placeholder="search......">
+            <div id="b">
+                <input type="button" value="Login">
+                <input type="button" value="Sign in">
+            </div>
+        
+        </div>
+    </div>
+
+   
+    <div class="main">
+
+     <div id="c">
+
+        <div class="row">
+            <div class="box pink">
+                <div class="co">Doctor</div>
+                <div class="co">Nurologist<br>Dr.Virendra Sinha</div>
+            </div>
+
+            <div class="box pink"></div>
+
+          
+        </div>
+        
+    </div>
+    <div id="d">
+        <h2>HEADING1</h2>
+        <p>Para    1</p>
+    </div>
+
+    </div>
+</body>
+</html>

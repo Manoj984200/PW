@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Yield Flexbox Demo</title>
+    <style>
+        /* Basic Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        
+        /* SCENARIO 1: THE NAVBAR 
+           Uses: display: flex, justify-content, align-items, gap
+        */
+        .navbar {
+            background-color: #1e293b; /* Dark Blue */
+            color: white;
+            padding: 1rem;
+            
+            /* 1. ACTIVATION */
+            display: flex; 
+            
+            /* 2. ALIGNMENT (Main Axis - Horizontal) */
+            /* Pushes Logo to far left, Links to far right */
+            justify-content: space-between; 
+            
+            /* 3. ALIGNMENT (Cross Axis - Vertical) */
+            /* Ensures text and buttons are vertically centered */
+            /* align-items: center;  */
+        }
+
+        .nav-links {
+            /* display: flex; */
+            /* 4. SPACING */
+            /* Adds 20px space between every link automatically */
+            /* gap: 20px;  */
+        }
+
+        /* SCENARIO 2: THE HERO SECTION 
+           Uses: flex-direction, flex-wrap
+        */
+        .hero {
+            background-color: #ebeff3; /* Light Grey */
+            /* padding: 4rem 2rem; */
+            min-height: 80vh;
+            
+            display: flex;
+            
+            /* 5. DIRECTION */
+            /* Default is 'row', but explicit is good. 
+               Change to 'column' to see them stack! */
+            flex-direction: row; 
+            
+            /* 6. WRAPPING */
+            /* If screen is too small, items drop to next line.
+               Crucial for mobile responsiveness. */
+            /* flex-wrap: wrap;  */
+            
+            align-items: center;
+            justify-content: center;
+            /* gap: 4rem; */
+            border: solid 3px rgb(110, 10, 10);
+        
+        }
+
+        /* SCENARIO 3: THE CONTENT (Child Items)
+           Uses: flex-grow (flex: 1)
+        */
+        .hero-text {
+            /* 7. GROWTH */
+            /* 'flex: 1' means: "Take up all available space".
+               This forces the text and image to split space evenly. */
+            flex: 1; 
+            /* min-width: 300px; Prevents it from getting too squished */
+            border: solid 1px black;
+        }
+        
+
+        .hero-image {
+            flex: 1;
+            /* min-width: 300px; */
+            display: flex;
+            justify-content: center; /* Centers the image inside its box */
+            border: solid 3px rgb(231, 67, 67);
+        }
+
+        /* Just for visual styling */
+        img { max-width: 100%; border-radius: 10px; box-shadow: 20px 10px 15px rgba(0,0,0,0.1); }
+        h1 { font-size: 3rem; margin-bottom: 1rem; color: #334155; }
+        p { font-size: 1.2rem; line-height: 1.6; color: #64748b; margin-bottom: 2rem; }
+        .btn { background: #2563eb; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><h3>CodeMentor</h3></div>
+        <div class="nav-links">
+            <a href="#" style="color: white; text-decoration: none;">Home</a>
+            <a href="#" style="color: white; text-decoration: none;">About</a>
+            <a href="#" style="color: white; text-decoration: none;">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        
+        <div class="hero-text">
+            <h1>Learn Flexbox</h1>
+            <p>Mastering these 6 properties covers 90% of layouts. Once you understand how 'flex-grow' and 'justify-content' work, Tailwind CSS becomes easy.</p>
+            <a href="#" class="btn">Get Started</a>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Coding Setup">
+        </div>
+
+    </section>
+
+</body>
+</html>
