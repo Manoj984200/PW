@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubbling + Event Delegation</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            padding: 30px;
+        }
+
+        #container{
+            border: 3px solid black;
+            padding: 30px;
+            width: 400px;
+            margin-top: 20px;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h2>Event Bubbling + Event Delegation</h2>
+
+    <!-- INPUT -->
+    <input type="text" id="colorInput" placeholder="Enter color">
+
+    <!-- BUTTON -->
+    <button id="changeBtn">
+        Change Background
+    </button>
+
+
+    <!-- PARENT CONTAINER -->
+    <div id="container">
+
+        <!-- CHILD DIVS -->
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+    </div>
+
+
+
+<script>
+
+    // SELECT INPUT
+    let input = document.getElementById("colorInput");
+
+
+    // SELECT BUTTON
+    let btn = document.getElementById("changeBtn");
+
+
+    // SELECT PARENT CONTAINER
+    let container = document.getElementById("container");
+
+
+
+    // FUNCTION TO CHANGE BODY COLOR
+    function changeBackground(){
+
+        let color = input.value;
+
+        document.body.style.backgroundColor = color;
+
+    }
+
+
+
+    // BUTTON CLICK EVENT
+    btn.addEventListener("click", ()=>{
+
+        console.log("Button Clicked");
+
+        changeBackground();
+
+    });
+
+
+
+    // ENTER KEY EVENT
+    input.addEventListener("keydown",(e)=>{
+
+        if(e.key === "Enter"){
+
+            console.log("Enter Key Pressed");
+
+            changeBackground();
+
+        }
+
+    });
+
+
+
+    // EVENT DELEGATION + BUBBLING
+    container.addEventListener("click",(e)=>{
+
+        console.log("Container Clicked Due To Bubbling");
+
+
+
+        // CHECK CLICKED ELEMENT IS BOX -output of this can be checked on consol or browser
+        if(e.target.classList.contains("box")){
+
+            let color = input.value;
+
+            e.target.style.backgroundColor = color;
+
+        }
+
+    });
+    // below code is used to change the color of 2nd div(box) when clicked 
+container.addEventListener("click",(e)=>{
+
+    let boxes = document.querySelectorAll(".box");
+
+    if(e.target === boxes[1]){
+
+        e.target.style.backgroundColor = "red";
+
+    }
+
+});
+ // below code is used to change the color of 2nd div(box) when clicked 
+container.addEventListener("click",(e)=>{
+
+    let boxes = document.querySelectorAll(".box");
+
+    if(e.target === boxes[0]){
+
+        e.target.style.backgroundColor = "yellow";
+
+    }
+
+});
+ // below code is used to change the color of 2nd div(box) when clicked 
+container.addEventListener("click",(e)=>{
+
+    let boxes = document.querySelectorAll(".box");
+
+    if(e.target === boxes[2]){
+
+        e.target.style.backgroundColor = "green";
+
+    }
+
+});
+</script>
+
+</body>
+</html>
+
+
+<!-- use below code to change the color of 2nd div(box) if clicked -->
+ 

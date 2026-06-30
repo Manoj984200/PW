@@ -1,0 +1,20 @@
+#A{
+    background-color: aqua;
+    height: 200px;
+    width: 25%;
+}
+#B{
+    background-color: blue;
+    height: 200px;
+    width: 25%;
+}
+#C{
+    height: 200px;
+    width: 25%;
+    background-color: yellow;
+}
+#D{
+    height: 200px;
+    width: 25%;
+    background-color: rgb(255, 0, 0);
+}
