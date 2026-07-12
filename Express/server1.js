@@ -1,3 +1,5 @@
+
+const { dbConfig } = require("./configurations/db.config");
 const express = require("express");
 const dotenv = require("dotenv"); // this file created in same folder to to get poet number and some other info. check it before moving to next line
 
@@ -15,8 +17,13 @@ app.use(logger) //this is added after adding a file in log folder file name is l
 // Register Router
 app.use("/api/v1/users", userRouter);
 
-app.listen(port, () => {
+app.listen(port, async () => {
+
+    // Connect MongoDB
+    await dbConfig();
+
     console.log(`Listening to the port ${port}`);
+
 });
 // postman test url for getUser API: http://localhost:5001/api/v1/users/getUser
 // by the next topic middleware added in program(in middleaware folder file name is user.middleware.js) and then added in router file(user.router.js) and then imported in server1.js file.even there is no change in this server1.js the middleware was added in between and then tested in postman. so now the url for getUser API is http://localhost:5001/api/v1/users/getUser and if user age is less than 18 then it will give message "Ghar Jao!!!" otherwise it will give message "PONG!!"

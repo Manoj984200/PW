@@ -1,2 +1,10 @@
 /api/v1/users/getUser
 /getUser
+/api/v1/users/getUser
+/getUser
+/api/v1/users/getUser
+/getUser
+/createUser
+/api/v1/users/createUser
+/createUser
+/api/v1/users/createUser
