@@ -5,7 +5,7 @@ async function dbConfig() {
     try {
 
         await mongoose.connect(
-            "mongodb+srv://manojsharmakumar1989_db_user:j9qcI1srXrJXYEGc@cluster0.okkxbtq.mongodb.net/express_db?retryWrites=true&w=majority&appName=Cluster0"
+            process.env.MONGO_URI || "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<dbname>?retryWrites=true&w=majority"
         );
 
         console.log("DB connected successfully");
@@ -13,7 +13,7 @@ async function dbConfig() {
     } catch (err) {
 
         console.log(err);
-
+ 
     }
 
 }

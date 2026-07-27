@@ -31,7 +31,6 @@ userRouter.post(
     logger,
     createUser
 );
-
 module.exports = {
     userRouter
 };

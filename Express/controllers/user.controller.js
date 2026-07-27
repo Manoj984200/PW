@@ -4,36 +4,29 @@ function getUser(req, res) {
     res.send("PONG!!");
 }
 
-function createUser(req, res) {
+function createUser(request, response) {
 
-    User.create({
+    User.create(request.body)
 
-        age: 25,
-        password: "123456",
-        email: "manoj@gmail.com",
-        phoneNumber: 9876543210
+        .then((user) => {
 
-    })
+            response.json({
+                message: "User Created Successfully",
+                data: user
+            });
 
-    .then((user) => {
+        })
 
-        res.json({
-            message: "User Created Successfully",
-            data: user
+        .catch((err) => {
+
+            console.log(err);
+
+            response.json({
+                message: "Error",
+                error: err.message
+            });
+
         });
-
-    })
-
-    .catch((err) => {
-
-        console.log(err);
-
-        res.json({
-            message: "Error",
-            error: err
-        });
-
-    });
 
 }
 

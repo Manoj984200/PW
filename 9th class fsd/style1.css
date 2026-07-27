@@ -1,0 +1,26 @@
+h1::first-letter {
+    color: red;
+    font-size: 200%;
+    background-color: yellow;
+}
+p::first-line {
+    color: blue;
+    font-size: 150%;
+    background-color: lightgray;
+}
+::selection {
+    color: white;
+    background-color: black;
+}
+h1::after {
+    content: "pre text ";
+    color: rgb(121, 117, 94);
+}
+lable::after {
+    content: " *";
+    color: red;
+}
+input.req::after {
+    content: " *";
+    color: red;
+}
