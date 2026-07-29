@@ -1,9 +1,35 @@
 const mongoose = require("mongoose");
 
-const userSchema2 = new mongoose.Schema({});
+const userSchema2 = new mongoose.Schema({
+    name: {
+        type: String,
+        required: [true, "Name is required"]
+    },
+
+    age: {
+        type: Number,
+        required: [true, "Age is required"]
+    },
+
+    email: {
+        type: String,
+        required: [true, "Email is required"],
+        unique: true,
+        lowercase: true,
+        match: [
+            /^\S+@\S+\.\S+$/,
+            "Invalid email format"
+        ]
+    },
+
+    phoneNumber: {
+        type: Number,
+        required: [true, "Phone Number is required"]
+    }
+});
 
 const User2 = mongoose.model("User2", userSchema2);
 
 module.exports = {
-    User2,
+    User2
 };
