@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Positioning Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            /* Extra height to demonstrate scrolling for fixed/sticky */
+            height: 2000px; 
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            border: 2px dashed #333;
+            padding: 20px;
+            /* Relative positioning here acts as a reference point for the absolute box */
+            position: relative; 
+            background-color: white;
+        }
+
+        .box {
+            width: 250px;
+            padding: 15px;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* 1. Static (Default) */
+        .box-static {
+            background-color: #7f8c8d;
+            position: static;
+        }
+
+        /* 2. Relative */
+        .box-relative {
+            background-color: #3498db;
+            position: relative;
+            top: 20px;
+            left: 30px;
+        }
+
+        /* 3. Absolute */
+        .box-absolute {
+            background-color: #e74c3c;
+            position: absolute;
+            top: -20px;
+            right: -20px;
+        }
+
+        /* 4. Fixed */
+        .box-fixed {
+            background-color: #2ecc71;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        /* 5. Sticky */
+        .box-sticky {
+            background-color: #9b59b6;
+            position: sticky;
+            top: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>CSS Positioning Container</h2>
+        
+        <div class="box box-static">
+            1. Static<br>
+            (Normal document flow)
+        </div>
+
+        <div class="box box-relative">
+            2. Relative<br>
+            (Moved 20px down, 30px right from its normal spot)
+        </div>
+
+        <div class="box box-sticky">
+            5. Sticky<br>
+            (Scroll down! I will stick 10px from the top)
+        </div>
+
+        <div class="box box-static">
+            Spacer Box<br>
+            (Just here to take up space)
+        </div>
+
+        <div class="box box-absolute">
+            3. Absolute<br>
+            (Pinned to top-right of the container)
+        </div>
+    </div>
+
+    <div class="box box-fixed">
+        4. Fixed<br>
+        (Pinned to bottom-right of your screen)
+    </div>
+
+</body>
+</html>
