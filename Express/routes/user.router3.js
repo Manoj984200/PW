@@ -7,12 +7,12 @@ const {
 } = require("../controllers/user.controller3");
 
 const {
-    isAuthorized
+    isAuthorized,authorize
 } = require("../middlewares/user.middleware3");
 
 const userRouter3 = express.Router();
 
-userRouter3.get("/getUser", isAuthorized, getUser);
+userRouter3.get("/getUser", isAuthorized, authorize("admin"), getUser);
 userRouter3.post("/createUser", createUser);
 userRouter3.post("/signIn", signIn);
 

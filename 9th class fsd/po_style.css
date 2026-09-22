@@ -1,25 +1,10 @@
-body{
-	margin: 0;
-	padding: 0;
-	color: #f10e0e;
-	box-sizing: border-box;
-	
+div{
+    height:2cm;
+    width:80%;
+    text-align:center;
 }
-header{
-	position: sticky;
-	top: 50;
-	background-color: #0c0101;
-	color: #f1f1f1;
-	padding: 15px;
-	/* width: 100%; */
 
-}
-/* .bottom{
-	position: fixed;
-	top: 50;
-	background-color: #0c0101;
-	color: #f1f1f1;
-	padding: 15px;
-	/* width: 100%; */
-
-} */
+.a{background-color:yellow;}
+.b{background-color:pink;}
+.c{background-color:green;}
+.d{background-color:skyblue;}

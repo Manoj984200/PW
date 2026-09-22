@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedConnect — Global Doctor Finder</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f9fc;
+    color:#17202a;
+}
+
+/* NAVBAR */
+nav{
+    height:75px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 20px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:26px;
+    font-weight:800;
+    color:#087f8c;
+}
+
+.logo span{
+    color:#123c69;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+}
+
+.nav-links a:hover{
+    color:#087f8c;
+}
+
+.login-btn{
+    background:#087f8c;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* HERO */
+.hero{
+    min-height:570px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:70px 7%;
+    background:linear-gradient(135deg,#e8fbff,#f7fcff);
+    overflow:hidden;
+}
+
+.hero-content{
+    width:52%;
+}
+
+.badge{
+    display:inline-block;
+    background:#d7f5f7;
+    color:#087f8c;
+    padding:8px 16px;
+    border-radius:20px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:58px;
+    line-height:1.08;
+    margin-bottom:20px;
+    color:#123c69;
+}
+
+.hero h1 span{
+    color:#087f8c;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.7;
+    color:#5c6b73;
+    max-width:600px;
+    margin-bottom:30px;
+}
+
+.search-box{
+    background:white;
+    padding:12px;
+    border-radius:15px;
+    display:flex;
+    gap:10px;
+    max-width:650px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.search-box input{
+    flex:1;
+    border:none;
+    outline:none;
+    font-size:16px;
+    padding:14px;
+}
+
+.search-box button{
+    background:#087f8c;
+    color:white;
+    border:none;
+    padding:0 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.hero-visual{
+    width:40%;
+    display:flex;
+    justify-content:center;
+}
+
+.doctor-circle{
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    background:linear-gradient(145deg,#087f8c,#123c69);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:150px;
+    box-shadow:0 25px 60px rgba(8,127,140,.3);
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    background:white;
+    padding:35px;
+    text-align:center;
+}
+
+.stat h2{
+    color:#087f8c;
+    font-size:32px;
+}
+
+.stat p{
+    color:#777;
+    margin-top:5px;
+}
+
+/* SECTION */
+section{
+    padding:80px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:38px;
+    color:#123c69;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#718096;
+}
+
+/* SPECIALTIES */
+.specialties{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.specialty{
+    background:white;
+    padding:30px 20px;
+    text-align:center;
+    border-radius:18px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.specialty:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.specialty .icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.specialty h3{
+    color:#123c69;
+    margin-bottom:8px;
+}
+
+.specialty p{
+    color:#777;
+}
+
+/* DOCTORS */
+.doctor-section{
+    background:#eef8fa;
+}
+
+.filters{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    margin-bottom:35px;
+    flex-wrap:wrap;
+}
+
+.filters select{
+    padding:13px 20px;
+    border:1px solid #d8e3e8;
+    border-radius:10px;
+    background:white;
+    outline:none;
+}
+
+.doctors{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.doctor-card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,.07);
+    transition:.3s;
+}
+
+.doctor-card:hover{
+    transform:translateY(-7px);
+}
+
+.doctor-top{
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+.avatar{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    background:#d9f4f5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:38px;
+}
+
+.doctor-info h3{
+    color:#123c69;
+    margin-bottom:5px;
+}
+
+.doctor-info p{
+    color:#087f8c;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.rating{
+    margin:20px 0;
+    color:#f4a261;
+}
+
+.location{
+    color:#697780;
+    margin-bottom:20px;
+}
+
+.book-btn{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:10px;
+    background:#087f8c;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.book-btn:hover{
+    background:#066873;
+}
+
+/* HOW IT WORKS */
+.steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.step{
+    text-align:center;
+    padding:30px;
+}
+
+.step-number{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#087f8c;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:bold;
+    margin:0 auto 20px;
+}
+
+.step h3{
+    color:#123c69;
+    margin-bottom:10px;
+}
+
+.step p{
+    color:#718096;
+    line-height:1.6;
+}
+
+/* CTA */
+.cta{
+    margin:0 7% 80px;
+    border-radius:25px;
+    padding:65px;
+    text-align:center;
+    background:linear-gradient(135deg,#123c69,#087f8c);
+    color:white;
+}
+
+.cta h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    margin-bottom:25px;
+    opacity:.9;
+}
+
+.cta button{
+    padding:14px 30px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#087f8c;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:#102c46;
+    color:white;
+    padding:50px 7%;
+}
+
+.footer-content{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+footer h3{
+    margin-bottom:15px;
+}
+
+footer p,footer li{
+    color:#b9c8d3;
+    line-height:1.8;
+    list-style:none;
+}
+
+footer ul{
+    padding:0;
+}
+
+.copyright{
+    border-top:1px solid rgba(255,255,255,.15);
+    margin-top:35px;
+    padding-top:20px;
+    text-align:center;
+    color:#aebbc5;
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:2000;
+}
+
+.modal-box{
+    background:white;
+    width:90%;
+    max-width:500px;
+    padding:35px;
+    border-radius:20px;
+    position:relative;
+    animation:popup .3s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:15px;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.modal-box h2{
+    color:#123c69;
+    margin-bottom:20px;
+}
+
+.modal-box input,
+.modal-box textarea{
+    width:100%;
+    padding:13px;
+    margin:8px 0;
+    border:1px solid #d5dfe4;
+    border-radius:8px;
+    outline:none;
+}
+
+.modal-box textarea{
+    height:100px;
+    resize:none;
+}
+
+.submit{
+    width:100%;
+    padding:14px;
+    background:#087f8c;
+    color:white;
+    border:none;
+    border-radius:8px;
+    margin-top:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-content{
+        width:100%;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero-visual{
+        width:100%;
+        margin-top:40px;
+    }
+
+    .doctor-circle{
+        width:250px;
+        height:250px;
+        font-size:100px;
+    }
+
+    .specialties{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .doctors{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .stats{
+        gap:25px;
+        flex-wrap:wrap;
+    }
+
+    .specialties,
+    .doctors{
+        grid-template-columns:1fr;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .search-box button{
+        padding:14px;
+    }
+
+    .cta{
+        padding:40px 20px;
+    }
+
+    .cta h2{
+        font-size:30px;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">Med<span>Connect</span> 🩺</div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#specialties">Specialties</a></li>
+        <li><a href="#doctors">Doctors</a></li>
+        <li><a href="#how">How It Works</a></li>
+    </ul>
+
+    <button class="login-btn" onclick="openModal('Login')">Login</button>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">🌎 Healthcare Without Borders</div>
+
+        <h1>
+            Find the Right
+            <span>Doctor</span>
+            For You
+        </h1>
+
+        <p>
+            Describe your health concern and discover qualified doctors
+            from around the world. Search by specialty, location and
+            medical expertise.
+        </p>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="problemInput"
+                placeholder="Example: headache, skin problem, heart..."
+            >
+
+            <button onclick="findDoctor()">
+                Find Doctor 🔍
+            </button>
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+        <div class="doctor-circle">
+            👨‍⚕️
+        </div>
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+<div class="stats">
+
+    <div class="stat">
+        <h2>50K+</h2>
+        <p>Verified Doctors</p>
+    </div>
+
+    <div class="stat">
+        <h2>120+</h2>
+        <p>Countries</p>
+    </div>
+
+    <div class="stat">
+        <h2>30M+</h2>
+        <p>Patients Helped</p>
+    </div>
+
+    <div class="stat">
+        <h2>24/7</h2>
+        <p>Healthcare Support</p>
+    </div>
+
+</div>
+
+
+<!-- SPECIALTIES -->
+<section id="specialties">
+
+    <div class="section-title">
+        <h2>Medical Specialties</h2>
+        <p>Find specialists for different health concerns.</p>
+    </div>
+
+    <div class="specialties">
+
+        <div class="specialty" onclick="searchSpecialty('Cardiology')">
+            <div class="icon">❤️</div>
+            <h3>Cardiology</h3>
+            <p>Heart & cardiovascular care</p>
+        </div>
+
+        <div class="specialty" onclick="searchSpecialty('Dermatology')">
+            <div class="icon">🧴</div>
+            <h3>Dermatology</h3>
+            <p>Skin, hair & nails</p>
+        </div>
+
+        <div class="specialty" onclick="searchSpecialty('Neurology')">
+            <div class="icon">🧠</div>
+            <h3>Neurology</h3>
+            <p>Brain & nervous system</p>
+        </div>
+
+        <div class="specialty" onclick="searchSpecialty('Pediatrics')">
+            <div class="icon">👶</div>
+            <h3>Pediatrics</h3>
+            <p>Children's healthcare</p>
+        </div>
+
+        <div class="specialty" onclick="searchSpecialty('Orthopedics')">
+            <div class="icon">🦴</div>
+            <h3>Orthopedics</h3>
+            <p>Bones & joints</p>
+        </div>
+
+        <div class="specialty" onclick="searchSpecialty('Dentistry')">
+            <div class="icon">🦷</div>
+            <h3>Dentistry</h3>
+            <p>Dental healthcare</p>
+        </div>
+
+        <div class="specialty" onclick="searchSpecialty('Psychiatry')">
+            <div class="icon">🧘</div>
+            <h3>Psychiatry</h3>
+            <p>Mental health</p>
+        </div>
+
+        <div class="specialty" onclick="searchSpecialty('Ophthalmology')">
+            <div class="icon">👁️</div>
+            <h3>Ophthalmology</h3>
+            <p>Eye care & vision</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DOCTORS -->
+<section class="doctor-section" id="doctors">
+
+    <div class="section-title">
+        <h2>Top Doctors</h2>
+        <p>Explore highly rated specialists.</p>
+    </div>
+
+    <div class="filters">
+
+        <select id="specialtyFilter" onchange="filterDoctors()">
+            <option value="all">All Specialties</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Orthopedics">Orthopedics</option>
+        </select>
+
+        <select id="countryFilter" onchange="filterDoctors()">
+            <option value="all">All Countries</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Germany">Germany</option>
+        </select>
+
+    </div>
+
+
+    <div class="doctors" id="doctorList">
+
+        <div class="doctor-card" data-specialty="Cardiology" data-country="India">
+
+            <div class="doctor-top">
+                <div class="avatar">👨‍⚕️</div>
+
+                <div class="doctor-info">
+                    <h3>Dr. Arjun Mehta</h3>
+                    <p>Cardiologist</p>
+                </div>
+            </div>
+
+            <div class="rating">★★★★★ 4.9</div>
+
+            <div class="location">
+                📍 Mumbai, India
+            </div>
+
+            <button class="book-btn" onclick="openBooking('Dr. Arjun Mehta')">
+                Book Appointment
+            </button>
+
+        </div>
+
+
+        <div class="doctor-card" data-specialty="Dermatology" data-country="USA">
+
+            <div class="doctor-top">
+                <div class="avatar">👩‍⚕️</div>
+
+                <div class="doctor-info">
+                    <h3>Dr. Sarah Wilson</h3>
+                    <p>Dermatologist</p>
+                </div>
+            </div>
+
+            <div class="rating">★★★★★ 4.8</div>
+
+            <div class="location">
+                📍 New York, USA
+            </div>
+
+            <button class="book-btn" onclick="openBooking('Dr. Sarah Wilson')">
+                Book Appointment
+            </button>
+
+        </div>
+
+
+        <div class="doctor-card" data-specialty="Neurology" data-country="UK">
+
+            <div class="doctor-top">
+                <div class="avatar">👨‍⚕️</div>
+
+                <div class="doctor-info">
+                    <h3>Dr. James Anderson</h3>
+                    <p>Neurologist</p>
+                </div>
+            </div>
+
+            <div class="rating">★★★★★ 4.9</div>
+
+            <div class="location">
+                📍 London, UK
+            </div>
+
+            <button class="book-btn" onclick="openBooking('Dr. James Anderson')">
+                Book Appointment
+            </button>
+
+        </div>
+
+
+        <div class="doctor-card" data-specialty="Pediatrics" data-country="Germany">
+
+            <div class="doctor-top">
+                <div class="avatar">👩‍⚕️</div>
+
+                <div class="doctor-info">
+                    <h3>Dr. Anna Schmidt</h3>
+                    <p>Pediatrician</p>
+                </div>
+            </div>
+
+            <div class="rating">★★★★★ 4.7</div>
+
+            <div class="location">
+                📍 Berlin, Germany
+            </div>
+
+            <button class="book-btn" onclick="openBooking('Dr. Anna Schmidt')">
+                Book Appointment
+            </button>
+
+        </div>
+
+
+        <div class="doctor-card" data-specialty="Orthopedics" data-country="India">
+
+            <div class="doctor-top">
+                <div class="avatar">👨‍⚕️</div>
+
+                <div class="doctor-info">
+                    <h3>Dr. Vikram Singh</h3>
+                    <p>Orthopedic Surgeon</p>
+                </div>
+            </div>
+
+            <div class="rating">★★★★★ 4.8</div>
+
+            <div class="location">
+                📍 Delhi, India
+            </div>
+
+            <button class="book-btn" onclick="openBooking('Dr. Vikram Singh')">
+                Book Appointment
+            </button>
+
+        </div>
+
+
+        <div class="doctor-card" data-specialty="Cardiology" data-country="USA">
+
+            <div class="doctor-top">
+                <div class="avatar">👩‍⚕️</div>
+
+                <div class="doctor-info">
+                    <h3>Dr. Emily Carter</h3>
+                    <p>Cardiologist</p>
+                </div>
+            </div>
+
+            <div class="rating">★★★★★ 4.9</div>
+
+            <div class="location">
+                📍 California, USA
+            </div>
+
+            <button class="book-btn" onclick="openBooking('Dr. Emily Carter')">
+                Book Appointment
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section id="how">
+
+    <div class="section-title">
+        <h2>How MedConnect Works</h2>
+        <p>Getting connected with the right doctor is simple.</p>
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Describe Your Problem</h3>
+            <p>
+                Tell us about your health concern or select
+                a medical specialty.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Find Your Doctor</h3>
+            <p>
+                Browse doctors based on specialty, location,
+                experience and ratings.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Book Consultation</h3>
+            <p>
+                Choose a doctor and request an appointment
+                for consultation.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<div class="cta">
+
+    <h2>Healthcare Should Have No Borders 🌎</h2>
+
+    <p>
+        Connect with medical professionals from around the world.
+    </p>
+
+    <button onclick="openModal('Patient Registration')">
+        Get Started
+    </button>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <h3>MedConnect 🩺</h3>
+            <p>
+                A concept healthcare platform designed to
+                connect patients with doctors worldwide.
+            </p>
+        </div>
+
+        <div>
+            <h3>Platform</h3>
+            <ul>
+                <li>Find Doctors</li>
+                <li>Specialties</li>
+                <li>Appointments</li>
+                <li>Telemedicine</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>For Doctors</h3>
+            <ul>
+                <li>Join Network</li>
+                <li>Doctor Dashboard</li>
+                <li>Manage Patients</li>
+                <li>Doctor Login</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Support</h3>
+            <ul>
+                <li>Help Center</li>
+                <li>Contact Us</li>
+                <li>Privacy</li>
+                <li>Terms</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 MedConnect. This is a demonstration website.
+    </div>
+
+</footer>
+
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <span class="close" onclick="closeModal()">×</span>
+
+        <h2 id="modalTitle">Book Appointment</h2>
+
+        <input type="text" placeholder="Your Full Name">
+
+        <input type="email" placeholder="Email Address">
+
+        <input type="tel" placeholder="Phone Number">
+
+        <input type="date">
+
+        <textarea placeholder="Describe your problem..."></textarea>
+
+        <button class="submit" onclick="submitForm()">
+            Submit Request
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* MODAL */
+function openModal(title){
+
+    document.getElementById("modalTitle").innerText = title;
+
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+
+    document.getElementById("modal").style.display = "none";
+}
+
+
+/* BOOKING */
+function openBooking(doctor){
+
+    document.getElementById("modalTitle").innerText =
+        "Book Appointment with " + doctor;
+
+    document.getElementById("modal").style.display = "flex";
+}
+
+
+/* SUBMIT */
+function submitForm(){
+
+    alert(
+        "Appointment request submitted successfully!\\n\\n" +
+        "This is a demo website. A real version would send the request to a backend/database."
+    );
+
+    closeModal();
+}
+
+
+/* FILTER DOCTORS */
+function filterDoctors(){
+
+    const specialty =
+        document.getElementById("specialtyFilter").value;
+
+    const country =
+        document.getElementById("countryFilter").value;
+
+    const cards =
+        document.querySelectorAll(".doctor-card");
+
+    cards.forEach(card => {
+
+        const cardSpecialty =
+            card.dataset.specialty;
+
+        const cardCountry =
+            card.dataset.country;
+
+        const specialtyMatch =
+            specialty === "all" ||
+            specialty === cardSpecialty;
+
+        const countryMatch =
+            country === "all" ||
+            country === cardCountry;
+
+        if(specialtyMatch && countryMatch){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+}
+
+
+/* SEARCH */
+function findDoctor(){
+
+    const problem =
+        document.getElementById("problemInput").value.toLowerCase();
+
+    if(problem.trim() === ""){
+
+        alert("Please enter your health problem first.");
+
+        return;
+    }
+
+    let specialty = "";
+
+    if(
+        problem.includes("heart") ||
+        problem.includes("chest") ||
+        problem.includes("blood pressure")
+    ){
+
+        specialty = "Cardiology";
+
+    }else if(
+        problem.includes("skin") ||
+        problem.includes("acne") ||
+        problem.includes("rash")
+    ){
+
+        specialty = "Dermatology";
+
+    }else if(
+        problem.includes("brain") ||
+        problem.includes("headache") ||
+        problem.includes("migraine")
+    ){
+
+        specialty = "Neurology";
+
+    }else if(
+        problem.includes("bone") ||
+        problem.includes("joint") ||
+        problem.includes("knee") ||
+        problem.includes("back")
+    ){
+
+        specialty = "Orthopedics";
+
+    }else{
+
+        alert(
+            "We couldn't automatically match this problem. " +
+            "Please choose a medical specialty below."
+        );
+
+        document
+            .getElementById("specialties")
+            .scrollIntoView();
+
+        return;
+    }
+
+    document.getElementById("specialtyFilter").value = specialty;
+
+    filterDoctors();
+
+    document
+        .getElementById("doctors")
+        .scrollIntoView();
+
+}
+
+
+/* SPECIALTY CLICK */
+function searchSpecialty(specialty){
+
+    document.getElementById("specialtyFilter").value =
+        specialty;
+
+    filterDoctors();
+
+    document
+        .getElementById("doctors")
+        .scrollIntoView();
+}
+
+
+/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+window.onclick = function(event){
+
+    const modal =
+        document.getElementById("modal");
+
+    if(event.target === modal){
+
+        closeModal();
+
+    }
+}
+
+</script>
+
+</body>
+</html>

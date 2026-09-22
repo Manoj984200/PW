@@ -50,7 +50,7 @@ async function createUser(request, response) {
 
 async function signIn(request, response) {
     try {
-        const { email, password } = request.body;
+        const { email, password,role } = request.body;
         const user = await User3.findOne({ email });
 
         if (!user) {
@@ -67,12 +67,7 @@ async function signIn(request, response) {
             });
         }
 
-        const token = jwt.sign(
-            { email },
-            process.env.JWT_SECRET,
-            { expiresIn: "1h" }
-        );
-
+        let token = await jwt.sign(request.body, process.env.JWT_SECRET);
         response.cookie("token", token);
 
         return response.status(200).json({
